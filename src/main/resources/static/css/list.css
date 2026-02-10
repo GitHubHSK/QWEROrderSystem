@@ -1,0 +1,141 @@
+/* 전체 스타일 */
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    background-color: #fff8e6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 12px;
+    border: 2px solid #e0d1b3;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* 제목 */
+.title {
+    text-align: center;
+    font-size: 24px;
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+    border-bottom: 2px solid #e0d1b3;
+    color: #d35400;
+}
+
+/* 버튼 공통 */
+.btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    text-decoration: none;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+.btn.main {
+    background-color: #d35400;
+}
+.btn.sub {
+    background-color: #777;
+}
+.btn.small {
+    background-color: #d35400;
+    padding: 6px 12px;
+    font-size: 13px;
+}
+
+.btn.edit {
+    background-color: #d35400;
+}
+.btn.delete {
+    background-color: #c0392b;
+}
+
+/* 상단 버튼 정렬 */
+.top-buttons {
+    text-align: center;
+    margin-bottom: 16px;
+}
+.top-buttons .btn {
+    margin: 0 6px;
+}
+
+/* 필터 박스 */
+.filter-box {
+    text-align: center;
+    margin: 14px 0;
+}
+.filter-box label {
+    margin: 0 8px;
+    font-size: 15px;
+}
+.filter-box .btn {
+    margin-left: 10px;
+}
+
+/* 검색창 */
+.search-box {
+    text-align: right;
+    margin-bottom: 12px;
+}
+.search-box input {
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #aaa;
+    width: 180px;
+    font-size: 14px;
+}
+
+/* 테이블 */
+.menu-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 16px;
+    font-size: 14px;
+}
+.menu-table th, .menu-table td {
+    border: 1px solid #e0d1b3;
+    padding: 10px;
+    text-align: center;
+}
+.menu-table th {
+    background-color: #f9efe0;
+    font-weight: bold;
+}
+.menu-table img {
+    width: 90px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* 페이징 */
+.pagination {
+    text-align: center;
+    margin-top: 18px;
+}
+.pagination a {
+    padding: 5px 10px;
+    margin: 0 4px;
+    border-radius: 6px;
+    border: 1px solid #d35400;
+    text-decoration: none;
+    color: #d35400;
+    font-size: 14px;
+}
+.pagination a.active {
+    background-color: #d35400;
+    color: white;
+}
+.pagination a:hover {
+    background-color: #e68a59;
+    color: white;
+}

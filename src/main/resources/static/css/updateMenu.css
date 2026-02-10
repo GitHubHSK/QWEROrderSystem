@@ -1,0 +1,135 @@
+/* 전체 배경 */
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #fff8e6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+/* 폼 컨테이너 */
+.form-container {
+    width: 90%;
+    max-width: 500px;
+    background: white;
+    padding: 28px;
+    border-radius: 14px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    border: 3px solid #e9ddc8;
+}
+
+/* 제목 */
+.form-container h2 {
+    text-align: center;
+    margin-bottom: 22px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #c4551a;
+}
+
+/* 폼 그룹 */
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 15px;
+    box-sizing: border-box;
+    background: #fffef9;
+}
+
+input:focus,
+select:focus {
+    border-color: #d35400;
+    outline: none;
+    box-shadow: 0 0 4px rgba(211,84,0,0.4);
+}
+
+/* 버튼 영역 */
+.btn-box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 22px;
+    gap: 10px;
+}
+
+/* 버튼 공통 */
+.btn {
+    flex: 1;
+    padding: 12px 0;
+    font-size: 16px;
+    text-align: center;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+/* 등록 버튼 */
+.btn.submit {
+    background: #d35400;
+    color: white;
+}
+
+.btn.submit:hover {
+    background: #bf4100;
+}
+
+/* 취소 버튼 */
+.btn.cancel {
+    background: #e8dec6;
+    color: #4b3b25;
+}
+
+.btn.cancel:hover {
+    background: #d4c8b0;
+}
+
+/* 파일 업로드 커스텀 */
+.file-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fffcf5;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 10px 14px;
+    cursor: pointer;
+}
+
+.file-label {
+    background: #d35400;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: 0.3s;
+}
+
+.file-label:hover {
+    background: #bf4100;
+}
+
+#file-name {
+    color: #555;
+    font-size: 14px;
+}

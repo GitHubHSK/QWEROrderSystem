@@ -1,0 +1,263 @@
+/* 전체 컨테이너 */
+body {
+    font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff8e6;
+    color: #333;
+    box-sizing: border-box;
+}
+
+/* 제목 */
+.title {
+    text-align: center;
+    padding: 18px 0;
+    font-size: 24px;
+    font-weight: bold;
+    color: #d35400;
+    border-bottom: 2px solid #e0d1b3;
+    background: #fff8e6;
+    position: sticky; /* 스크롤 내려도 제목 고정 */
+    top: 0;
+    z-index: 1000;
+}
+
+/* 카테고리 필터 버튼 영역 (5분할 + 상단 고정 네비게이션) */
+#category-buttons {
+    position: sticky;
+    top: 56px; /* 제목 바로 아래에 붙도록 */
+    z-index: 999;
+    display: flex;
+    justify-content: space-between; /* 버튼 간 균등 배치 */
+    align-items: center;
+    background-color: #f9efe0;
+    border-bottom: 2px solid #e0d1b3;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+}
+
+/* 각 버튼을 5등분으로 화면 전체 폭에 맞게 */
+.btn-filter {
+    flex: 1; /* 균등 비율 */
+    width: 20%;
+    padding: 14px 0;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    border: none;
+    border-right: 1px solid #e0d1b3;
+    background: #e6d7ba;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-filter:last-child {
+    border-right: none;
+}
+
+.btn-filter.active,
+.btn-filter:hover {
+    background: #d35400;
+    color: #fff;
+}
+
+/* 메뉴 카드 컨테이너 */
+#menu-container {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 16px;
+    justify-content: center;
+    gap: 18px;
+}
+
+/* 메뉴 카드 (모바일 1열) */
+.menu-card {
+    width: 94%;
+    max-width: 480px;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+    transition: 0.3s;
+}
+
+.menu-card:hover {
+    transform: translateY(-4px);
+}
+
+/* PC/Tablet → 2열 */
+@media (min-width: 600px) {
+    .menu-card {
+        width: 45%;
+    }
+}
+
+/* 이미지 */
+.menu-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* 메뉴명 & 가격 */
+.menu-card h3,
+.menu-card p {
+    text-align: center;
+}
+
+.menu-card h3 {
+    font-size: 19px;
+    padding: 10px 10px 2px;
+    margin: 0;
+    font-weight: 600;
+}
+
+.menu-card p {
+    font-size: 16px;
+    padding: 0 10px 8px;
+    margin: 0;
+    color: #555;
+}
+
+/* 수량 조절 */
+.quantity-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px 0;
+    gap: 12px;
+}
+
+.qty-input {
+    width: 42px;
+    height: 38px;
+    font-size: 18px;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+.btn-qty {
+    width: 38px;
+    height: 38px;
+    font-size: 22px;
+    border: none;
+    border-radius: 6px;
+    background: #eee;
+    cursor: pointer;
+}
+
+/* 담기 버튼 */
+.btn-add-cart {
+    width: 100%;
+    background: #d35400;
+    color: white;
+    padding: 14px 0;
+    border: none;
+    font-size: 17px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-add-cart:hover {
+    background: #bf4100;
+}
+
+/* 장바구니 모달 */
+.hidden { display: none; }
+
+#cart-modal {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 3000;
+}
+
+.cart-overlay {
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    position: absolute;
+}
+
+.cart-box {
+    width: 88%;
+    max-width: 380px;
+    background: #fff;
+    padding: 15px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* 장바구니 제목 */
+.cart-box h3 {
+    text-align: center;
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* 장바구니 테이블 */
+#cart-table {
+    width: 100%;
+    margin-top: 10px;
+    border-collapse: collapse;
+    font-size: 14px;
+}
+
+#cart-table th,
+#cart-table td {
+    padding: 6px;
+    text-align: center;
+}
+
+/* 총 금액 표시 */
+#cart-total {
+    font-size: 17px;
+    font-weight: bold;
+    text-align: right;
+    margin: 10px 0;
+    padding-right: 4px;
+}
+
+/* 주문/닫기 버튼 */
+#btn-order,
+#btn-close-cart {
+    width: 100%;
+    padding: 12px 0;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 8px;
+}
+
+#btn-order {
+    background: #d35400;
+    color: white;
+}
+
+#btn-close-cart {
+    background: #777;
+    color: white;
+}
+
+/* 모바일 확대 (버튼 크기 조정) */
+@media (max-width: 480px) {
+    .btn-filter {
+        font-size: 17px;
+        padding: 16px 0;
+        border-radius: 0;
+    }
+
+    .title {
+        font-size: 26px;
+        padding: 20px 0;
+    }
+
+    #category-buttons {
+        top: 50px;
+    }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>人数 & アレルギー 選択</title>
+    <link rel="stylesheet" th:href="@{/css/countMember.css}">
+    <script defer th:src="@{/js/countMember.js}"></script>
+</head>
+<body>
+<div class="container">
+    <div class="table-info">
+        テーブル番号: <span th:text="${tableNo}">6</span>
+    </div>
+    <form th:action="@{/member/count}" method="post" id="orderForm">
+        <div class="count-box">
+            <button type="button" id="minus">−</button>
+            <span id="memberCount">1</span>
+            <input type="hidden" name="tableNo" th:value="${tableNo}">
+            <input type="hidden" name="member" id="member" value="1">
+            <button type="button" id="plus">＋</button>
+        </div>
+        <div class="checkbox-group">
+            <label><input type="checkbox" name="allergy" value="milk"> ミルク</label><br>
+            <label><input type="checkbox" name="allergy" value="egg"> 卵</label><br>
+            <label><input type="checkbox" name="allergy" value="nut"> ナッツ(ピーナッツ、クルミ、松の実)</label><br>
+            <label><input type="checkbox" name="allergy" value="fish"> 魚 </label><br>
+            <label><input type="checkbox" name="allergy" value="other"> その他(職員呼び出し) </label>
+        </div>
+        <button type="submit" class="submit-btn">次</button>
+    </form>
+</div>
+</body>
+</html>

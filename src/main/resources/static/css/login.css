@@ -1,0 +1,77 @@
+/* 전체 컨테이너 */
+body {
+    font-family: "Noto Sans KR", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #fff8e6; /* 부드러운 일본식 배경 */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* 로그인 박스 */
+.login-box {
+    width: 90%;
+    max-width: 360px;
+    padding: 24px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    border: 2px solid #e0d1b3;
+}
+
+/* 제목 */
+.login-box h2 {
+    font-size: 22px;
+    color: #d35400;
+    margin-bottom: 18px;
+}
+
+/* 입력 그룹 */
+.login-box .input-group {
+    text-align: left;
+    margin-bottom: 14px;
+}
+
+.login-box label {
+    display: block;
+    font-size: 14px;
+    color: #444;
+    margin-bottom: 4px;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    font-size: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* 로그인 버튼 */
+.login-box button {
+    width: 100%;
+    background: #d35400;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+    margin-top: 8px;
+    transition: 0.3s;
+}
+
+.login-box button:hover {
+    background: #bf4100;
+}
+
+/* 에러 메시지 */
+.error-msg {
+    color: red;
+    font-size: 14px;
+    margin-top: 12px;
+}

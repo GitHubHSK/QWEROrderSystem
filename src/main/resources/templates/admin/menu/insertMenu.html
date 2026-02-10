@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>メニュー登録</title>
+    <link rel="stylesheet" th:href="@{/css/insertMenu.css}">
+</head>
+<body>
+<div class="form-container">
+    <h2>メニュー登録</h2>
+    <form action="/admin/menu/insert" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label>カテゴリー</label>
+            <select name="categoryNo" required>
+                <option value="1">メインメニュー</option>
+                <option value="2">サイド</option>
+                <option value="3">ドリンク</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>メニュー名</label>
+            <input type="text" name="menuName" required>
+        </div>
+        <div class="form-group">
+            <label>価格</label>
+            <input type="number" name="price" required>
+        </div>
+        <div class="form-group">
+    		<label>イメージ</label>
+    		<div class="file-box">
+        		<label for="menuImageFile" class="file-label">ファイルを選択</label>
+        		<span id="file-name">選択されたファイルはありません</span>
+        		<input type="file" id="menuImageFile" name="menuImageFile" accept="image/*" hidden>
+    		</div>
+		</div>
+        <div class="btn-box">
+            <button type="submit" class="btn submit">登録</button>
+            <a href="/admin/menu/list" class="btn cancel">キャンセル</a>
+        </div>
+    </form>
+</div>
+<script defer th:src="@{/js/insertMenu.js}"></script>
+</body>
+</html>

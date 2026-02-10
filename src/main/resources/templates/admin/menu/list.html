@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>メニュー管理</title>
+<link rel="stylesheet" th:href="@{/css/list.css}">
+</head>
+<body>
+<div class="container">
+    <h2 class="title">メニュー管理</h2>
+    <!-- 상단 버튼 -->
+    <div class="top-buttons">
+        <a href="/admin/menu/insert" class="btn main">メニュー登録</a>
+        <a href="/admin/menu/orderList" class="btn sub">注文内訳</a>
+    </div>
+    <!-- 카테고리 체크박스 -->
+    <form id="categoryForm" action="/admin/menu/list" method="get" class="filter-box">
+        <label>
+        	<input type="checkbox" name="category" value="1"
+            th:checked="${selectedCategory != null and selectedCategory.contains(1)}">
+            メイン料理
+        </label>
+        <label>
+        	<input type="checkbox" name="category" value="2" 
+        	th:checked="${selectedCategory != null and selectedCategory.contains(2)}">
+        	サイド
+        </label>
+        <label>
+        	<input type="checkbox" name="category" value="3"
+            th:checked="${selectedCategory != null and selectedCategory.contains(3)}">
+            飲み物
+        </label>
+        <button type="submit" class="btn small">検索</button>
+    </form>
+    <!-- 검색창 -->
+    <form action="/admin/menu/list" method="get" class="search-box">
+        <input type="text" name="keyword" th:value="${keyword}" placeholder="メニュー名">
+        <button type="submit" class="btn small">検索</button>
+    </form>
+    <!-- 메뉴 테이블 -->
+    <table class="menu-table">
+        <thead>
+            <tr>
+                <th>番号</th>
+                <th>カテゴリー</th>
+                <th>メニュー名</th>
+                <th>価格</th>
+                <th>イメージ</th>
+                <th>状態</th>
+                <th>管理</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="menu : ${menuList}">
+                <td th:text="${menu.menuNo}"></td>
+                <td th:text="${menu.category.categoryName}"></td>
+                <td th:text="${menu.menuName}"></td>
+                <td th:text="${menu.price} + '円'"></td>
+                <td>
+                    <img th:if="${menu.menuImage != null}" th:src="@{'/uploads/' + ${menu.menuImage}}" alt="이미지">
+                </td>
+                <td th:text="${menu.isActive == 'Y' ? '活性' : '不活性'}"></td>
+                <td>
+                    <a th:href="@{'/admin/menu/update/' + ${menu.menuNo}}" class="btn edit">修整</a>
+                    <a href="#" th:attr="data-id=${menu.menuNo}"class="btn btn-delete" style="background-color: #f44336;">削除</a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <!-- 페이징 -->
+    <div class="pagination">
+        <span th:each="i : ${#numbers.sequence(1, page.totalPages)}">
+            <a th:href="@{/admin/menu/list(page=${i}, category=${selectedCategory}, keyword=${keyword})}"
+               th:text="${i}"
+               th:classappend="${i == page.number + 1} ? 'active'"></a>
+        </span>
+    </div>
+</div>
+<script defer th:src="@{/js/deleteMenu.js}"></script>
+</body>
+</html>

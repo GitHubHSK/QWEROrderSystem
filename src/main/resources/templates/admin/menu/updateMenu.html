@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>メニュー修正</title>
+    <link rel="stylesheet" th:href="@{/css/updateMenu.css}">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>メニュー修正</h2>
+
+    <form th:action="@{'/admin/menu/update/' + ${menu.menuNo}}" method="post" enctype="multipart/form-data">
+
+        <!-- ✅ 카테고리 -->
+        <div class="form-group">
+            <label>カテゴリー</label>
+            <select name="category.categoryNo" required>
+                <option value="1" th:selected="${menu.category.categoryNo == 1}">メインメニュー</option>
+                <option value="2" th:selected="${menu.category.categoryNo == 2}">サイド</option>
+                <option value="3" th:selected="${menu.category.categoryNo == 3}">ドリンク</option>
+            </select>
+        </div>
+
+        <!-- ✅ 메뉴 이름 -->
+        <div class="form-group">
+            <label>メニュー名</label>
+            <input type="text" name="menuName" th:value="${menu.menuName}" required>
+        </div>
+
+        <!-- ✅ 가격 -->
+        <div class="form-group">
+            <label>価格</label>
+            <input type="number" name="price" th:value="${menu.price}" required>
+        </div>
+
+        <!-- ✅ 현재 이미지 -->
+        <div class="form-group">
+            <label>現在のイメージ</label><br>
+            <img th:if="${menu.menuImage != null}"
+                 th:src="@{'/uploads/' + ${menu.menuImage}}"
+                 alt="이미지"
+                 style="width:150px; border-radius:8px; margin-top:8px;">
+        </div>
+
+        <!-- ✅ 새 이미지 (일본어 버전 커스텀 업로드) -->
+        <div class="form-group">
+            <label>新しい画像選択</label>
+            <div class="file-box">
+                <label for="menuImageFile" class="file-label">ファイルを選択</label>
+                <span id="file-name">選択されたファイルはありません</span>
+                <input type="file" id="menuImageFile" name="menuImageFile" accept="image/*" hidden>
+            </div>
+        </div>
+
+        <!-- ✅ 상태 -->
+        <div class="form-group">
+            <label>状態</label>
+            <select name="isActive">
+                <option value="Y" th:selected="${menu.isActive == 'Y'}">活性</option>
+                <option value="N" th:selected="${menu.isActive == 'N'}">不活性</option>
+            </select>
+        </div>
+
+        <!-- ✅ 버튼 영역 -->
+        <div class="btn-box">
+            <button type="submit" class="btn submit">修正完了</button>
+            <a href="/admin/menu/list" class="btn cancel">キャンセル</a>
+        </div>
+    </form>
+</div>
+
+<!-- ✅ 파일 선택 시 파일명 표시 -->
+<script defer th:src="@{/js/updateMenu.js}"></script>
+</body>
+</html>

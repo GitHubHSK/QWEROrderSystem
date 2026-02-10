@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>注文管理</title>
+    <link rel="stylesheet" th:href="@{/css/orderList.css}">
+</head>
+<body>
+<div class="container">
+    <!-- 상단 헤더 -->
+    <div class="header">
+        <h2 class="title">注文管理（オーダー一覧）</h2>
+        <a th:href="@{/admin/menu/list}" class="btn main">ホームへ戻る</a>
+    </div>
+    <!-- 주문 카드 그리드 -->
+    <div class="order-grid">
+        <div class="order-card" th:each="order : ${orders}">
+            <!-- 카드 상단 (테이블번호 + 주문시각) -->
+            <div class="order-header">
+                <span class="order-table">
+                    テーブル <b th:text="${order.table.tableNo}"></b>
+                </span>
+                <span class="order-date"
+                      th:text="${#temporals.format(order.createdDate, 'yyyy-MM-dd HH:mm')}">
+                </span>
+            </div>
+            <!-- 카드 본문 -->
+            <div class="order-body">
+                <div class="shop-name">店名：QWER</div>
+                <!-- 주문 메뉴 리스트 -->
+                <div class="menu-section">
+                    <h4>オーダーメニュー</h4>
+                    <ul>
+                        <li th:each="item : ${order.details}"
+                            th:text="${item.menuName + ' × ' + item.quantity}">
+                        </li>
+                    </ul>
+                </div>
+                <!-- 아레르기 정보 (에러 없는 버전) -->
+                <div class="allergy-section">
+                    <h4>アレルギー</h4>
+                    <ul>
+                        <li th:each="item : ${order.details}"
+                            th:if="${item.memo != null and item.memo != ''}"
+                            th:text="${item.memo}">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

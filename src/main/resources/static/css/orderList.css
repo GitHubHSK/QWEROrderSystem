@@ -1,0 +1,164 @@
+/* 기본 레이아웃 */
+body {
+    font-family: "Noto Sans JP", "Noto Sans KR", sans-serif;
+    background-color: #fff8e6;
+    margin: 0;
+    padding: 0;
+    color: #3b2b1f;
+}
+
+/* 전체 컨테이너 */
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 16px;
+}
+
+/* 상단 헤더 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.title {
+    color: #d35400;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* 공통 버튼 스타일 */
+.btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    display: inline-block;
+    transition: 0.2s;
+}
+
+.btn.main {
+    background-color: #d35400;
+    color: #fff;
+}
+
+.btn.main:hover {
+    background-color: #b84300;
+}
+
+/* 주문 카드 그리드 (반응형) */
+.order-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 20px;
+}
+
+/* 주문 카드 */
+.order-card {
+    background-color: #fffdf7;
+    border: 2px solid #e0d1b3;
+    border-radius: 14px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.order-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+/* 카드 상단 (테이블 + 날짜) */
+.order-header {
+    background-color: #f9efe0;
+    border-bottom: 2px solid #e0d1b3;
+    padding: 10px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.order-table {
+    font-weight: bold;
+    color: #d35400;
+}
+
+.order-date {
+    font-size: 13px;
+    color: #555;
+}
+
+/* 카드 본문 */
+.order-body {
+    padding: 16px;
+}
+
+.shop-name {
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #4b3a2d;
+}
+
+/* 메뉴 섹션 */
+.menu-section h4 {
+    font-size: 16px;
+    color: #c4551a;
+    margin: 8px 0 4px;
+}
+
+.menu-section ul {
+    padding-left: 18px;
+    margin: 0;
+}
+
+.menu-section li {
+    font-size: 15px;
+    margin-bottom: 4px;
+}
+
+/* 알레르기 섹션 */
+.allergy-section {
+    margin-top: 12px;
+    background-color: #fff0f0;
+    border: 1px solid #f0b6b6;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.allergy-section h4 {
+    margin: 0 0 6px;
+    font-size: 15px;
+    color: #b71c1c;
+}
+
+.allergy-section p {
+    margin: 0;
+    font-size: 14px;
+    color: #8b0000;
+}
+
+/* 반응형 (모바일) */
+@media (max-width: 768px) {
+    .container {
+        margin: 20px auto;
+        padding: 10px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .title {
+        font-size: 22px;
+    }
+
+    .order-grid {
+        grid-template-columns: 1fr;
+    }
+}

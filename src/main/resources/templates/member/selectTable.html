@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>テーブル選択</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" th:href="@{/css/selectTable.css}">
+</head>
+<body>
+<div class="wrap">
+	<h1>テーブル選択</h1>
+	<div class="panel">
+		<div class="stack" role="list">
+			<a class="tile" role="listitem"
+			th:each="n : ${#numbers.sequence(1,6)}"
+			th:href="@{/member/countMember/{no}(no=${n})}"
+			th:text="'テーブル ' + ${n}">テーブル N</a>
+		</div>
+	</div>
+</div>
+</body>
+</html>

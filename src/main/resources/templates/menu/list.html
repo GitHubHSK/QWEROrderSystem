@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>メニュー</title>
+<!-- CSS -->
+<link rel="stylesheet" th:href="@{/css/menu.css}">
+</head>
+<body>
+	<h2 class="title">メニュー</h2>
+	<!-- 카테고리 + 장바구니 버튼 -->
+	<div id="category-buttons">
+		<button data-filter="all" class="btn-filter active">全体</button>
+		<button data-filter="メインメニュー" class="btn-filter">メインメニュー</button>
+		<button data-filter="サイド" class="btn-filter">サイド</button>
+		<button data-filter="ドリンク" class="btn-filter">ドリンク</button>
+		<button id="btn-cart" class="btn-filter cart-btn">カート</button>
+	</div>
+	<!-- 메뉴 출력 영역 -->
+	<div id="menu-container"></div>
+	<!-- 장바구니 모달 (비동기 방식) -->
+	<div id="cart-modal" class="hidden">
+		<div class="cart-overlay"></div>
+		<div class="cart-box">
+			<h3 class="title">カート</h3>
+			<table id="cart-table">
+				<thead>
+					<tr>
+						<th>メニュー</th>
+						<th>数量</th>
+						<th>価格</th>
+					</tr>
+				</thead>
+				<tbody id="cart-body">
+					<!-- JS로 동적 생성 -->
+				</tbody>
+			</table>
+			<p id="cart-total">合計金額: 0円</p>
+			<button id="btn-order">注文する</button>
+			<button id="btn-close-cart">閉じる</button>
+		</div>
+	</div>
+	<!-- jQuery (CDN) -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- 테이블 번호 세션 연동 -->
+	<script th:inline="javascript">
+    	// 서버 세션에 저장된 'memberCount' 값을 자바스크립트 변수로 전달
+    	// 타임리프가 렌더링 시 /*[[...]]*/ 부분을 실제 값으로 치환함
+    	// 뒤에 있는 숫자(1)는 타임리프 미적용 시 사용할 기본값(에러 방지용)
+		const MEMBER_COUNT = /*[[${session.memberCount}]]*/1;
+    	
+		// 세션에 저장된 테이블 번호(tableNo)를 자바스크립트에서 사용하기 위해 전달
+	    // 기본값 0은 테이블 번호가 없을 경우 JS 에러를 방지하기 위한 값
+		const TABLE_NO = /*[[${session.tableNo}]]*/0;
+		
+	    // 세션에 저장된 알레르기 정보(List<String>)를 JS로 전달
+	    // 렌더링 시 ["卵","牛乳"] 같은 배열 형태로 변환됨
+	    // 기본값 null은 값이 없을 때 에러를 막기 위한 처리
+		const USER_ALLERGY = /*[[${allergy}]]*/null;
+	</script>
+	<!-- 메뉴/장바구니 로직 -->
+	<script defer th:src="@{/js/menu.js}"></script>
+</body>
+</html>
